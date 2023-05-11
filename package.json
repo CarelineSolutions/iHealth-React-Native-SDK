@@ -1,6 +1,6 @@
 {
   "name": "@ihealth/ihealthlibrary-react-native",
-  "version": "1.4.7",
+  "version": "1.5.1",
   "description": "React Native Model for iHealth Library",
   "main": "index.js",
   "scripts": {

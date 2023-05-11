@@ -32,7 +32,7 @@ public class HSProfileModule extends ReactContextBaseJavaModule {
     private static final String DCI_HS = "DCI_HS";
 
     private static final String ACTION_HISTORICAL_DATA_HS = "ACTION_HISTORICAL_DATA_HS";
-    private static final String HISTORDATA__HS = "HISTORDATA__HS";
+    private static final String HISTORDATA_HS = "HISTORDATA_HS";
     private static final String MEASUREMENT_DATE_HS = "MEASUREMENT_DATE_HS";
 
     private static final String ACTION_HISTORICAL_DATA_COMPLETE_HS = "ACTION_HISTORICAL_DATA_COMPLETE_HS";
@@ -64,7 +64,7 @@ public class HSProfileModule extends ReactContextBaseJavaModule {
         constants.put(LIVEDATA_HS, HsProfile.LIVEDATA_HS);
 
         constants.put(ACTION_ONLINE_RESULT_HS, HsProfile.ACTION_ONLINE_RESULT_HS);
-        constants.put(HISTORDATA__HS, HsProfile.HISTORDATA__HS);
+        constants.put(HISTORDATA_HS, HsProfile.HISTORDATA_HS);
         constants.put(DATAID, HsProfile.DATAID);
         constants.put(WEIGHT_HS, HsProfile.WEIGHT_HS);
         constants.put(FAT_HS, HsProfile.FAT_HS);

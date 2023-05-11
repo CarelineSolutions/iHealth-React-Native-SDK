@@ -43,6 +43,7 @@ public class iHealthDeviceManagerModule extends iHealthBaseModule implements Lif
 
     private final static String AM3S  = "AM3S";
     private final static String AM4   = "AM4";
+    private final static String AM5   = "AM5";
     private final static String PO3   = "PO3";
     private final static String BP5   = "BP5";
     private final static String BP5S  = "BP5S";
@@ -196,6 +197,10 @@ public class iHealthDeviceManagerModule extends iHealthBaseModule implements Lif
                 module = getReactApplicationContext().getNativeModule(AM4Module.class);
                 break;
 
+            case iHealthDevicesManager.TYPE_AM5:
+                module = getReactApplicationContext().getNativeModule(AM5Module.class);
+                break;
+
             case iHealthDevicesManager.TYPE_PO3:
                 module = getReactApplicationContext().getNativeModule(PO3Module.class);
                 break;
@@ -205,10 +210,11 @@ public class iHealthDeviceManagerModule extends iHealthBaseModule implements Lif
                 break;
 
             case iHealthDevicesManager.TYPE_HS2S:
+            case iHealthDevicesManager.TYPE_HS2S_PRO:
                 module = getReactApplicationContext().getNativeModule(HS2SModule.class);
                 break;
 
-                case iHealthDevicesManager.TYPE_HS4:
+            case iHealthDevicesManager.TYPE_HS4:
             case iHealthDevicesManager.TYPE_HS4S:
                 module = getReactApplicationContext().getNativeModule(HS4SModule.class);
                 break;
@@ -276,6 +282,7 @@ public class iHealthDeviceManagerModule extends iHealthBaseModule implements Lif
         final Map<String, Object> constants = new HashMap<>();
         constants.put(AM3S, iHealthDevicesManager.DISCOVERY_AM3S);
         constants.put(AM4, iHealthDevicesManager.DISCOVERY_AM4);
+        constants.put(AM5, iHealthDevicesManager.DISCOVERY_AM5);
         constants.put(PO3, iHealthDevicesManager.DISCOVERY_PO3);
         constants.put(BP5, iHealthDevicesManager.DISCOVERY_BP5);
         constants.put(BP5S, iHealthDevicesManager.DISCOVERY_BP5S);
@@ -350,6 +357,9 @@ public class iHealthDeviceManagerModule extends iHealthBaseModule implements Lif
 
             case "AM4":
                 return DiscoveryTypeEnum.AM4;
+
+            case "AM5":
+                return DiscoveryTypeEnum.AM5;
 
             case "BG1S":
                 return DiscoveryTypeEnum.BG1S;

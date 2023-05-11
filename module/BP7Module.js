@@ -101,11 +101,10 @@ module.exports = {
   /**
    * Check offline measurement mode.
    * @param {string} mac Device's mac address
-   * @param {int} unit 0:mmHg,1:kPa
    */
-  isEnableOffline: function(mac, unit){
+  isEnableOffline: function(mac){
     if (RCTModule != null) {
-      RCTModule.isEnableOffline(mac, unit);
+      RCTModule.isEnableOffline(mac);
     }else {
       console.log('~~~~~ RCTModule is null')
     }
@@ -114,7 +113,6 @@ module.exports = {
   /**
    * Set BP7 device unit.
    * @param {string} mac Device's mac address
-   * @param {int} unit 0:mmHg,1:kPa
    */
   conformAngle: function(mac){
     if (RCTModule != null) {

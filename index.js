@@ -12,6 +12,8 @@ var Component = {
     AM3SModule: require('./module/AM3SModule'),
     AM4Module: require('./module/AM4Module'),
     AMProfileModule: require('./module/AMProfileModule'),
+    AM5Module: require('./module/AM5Module'),
+    AM5ProfileModule: require('./module/AM5ProfileModule'),
     PO3Module: require('./module/PO3Module'),
     POProfileModule: require('./module/POProfileModule'),
     HS2Module: require('./module/HS2Module'),

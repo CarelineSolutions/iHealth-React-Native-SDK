@@ -54,6 +54,7 @@
 
 #define kType_AM3S @"AM3S"
 #define kType_AM4 @"AM4"
+#define kType_AM5 @"AM5"
 #define kType_PO3 @"PO3"
 #define kType_BP5 @"BP5"
 #define kType_BP7 @"BP7"
@@ -64,6 +65,7 @@
 #define kType_HS4 @"HS4"
 #define kType_HS4S @"HS4S"
 #define kType_HS2 @"HS2"
+#define kType_HS2S_PRO @"HS2S Pro"
 #define kType_BG1 @"BG1"
 #define kType_BG5 @"BG5"
 #define kType_BG5S @"BG5S"
@@ -99,6 +101,7 @@ RCT_EXPORT_MODULE()
     return @{
              @"AM3S" :kType_AM3S,
              @"AM4" :kType_AM4,
+             @"AM5" :kType_AM5,
              @"PO3":kType_PO3,
              @"PO3M":kType_PO3,
              @"BP5":kType_BP5,
@@ -120,6 +123,7 @@ RCT_EXPORT_MODULE()
              @"TS28B":kType_TS28B,
              @"BG1S":kType_BG1S,
              @"HS2S":kType_HS2S,
+             @"HS2S Pro":kType_HS2S_PRO,
              @"PO1":kType_PO1,
              @"PT3SBT":kType_PT3SBT,
              @"Event_Scan_Device":kEvent_Scan_Device,
@@ -151,6 +155,17 @@ RCT_EXPORT_MODULE()
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceConnectFailed:) name:AM4ConnectFailed object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceConnect:) name:AM4ConnectNoti object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceDisconnect:) name:AM4DisConnectNoti object:nil];
+        
+        //AM5
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceDiscover:) name:AM5Discover object:nil];
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceConnectFailed:) name:AM5ConnectFailed object:nil];
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceConnect:) name:AM5ConnectNoti object:nil];
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceDisconnect:) name:AM5DisConnectNoti object:nil];
+        
         // PO3
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceDiscover:) name:PO3Discover object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceConnectFailed:) name:PO3ConnectFailed object:nil];
@@ -267,6 +282,7 @@ RCT_EXPORT_MODULE()
         [AM3Controller shareIHAM3Controller];
         [AM3SController_V2 shareIHAM3SController];
         [AM4Controller shareIHAM4Controller];
+        [AM5Controller shareAM5Controller];
         [BP3LController shareBP3LController];
         [BP5Controller shareBP5Controller];
         [BP7Controller shareBP7Controller];
@@ -388,6 +404,7 @@ RCT_EXPORT_MODULE()
     NSDictionary *deviceNameForType = @{
                                         @"AM3S" :kType_AM3S,
                                         @"AM4" :kType_AM4,
+                                        @"AM5" :kType_AM5,
                                         @"PO3":kType_PO3,
                                         @"PO3M":kType_PO3,
                                         @"BP3L" :kType_BP3L,
@@ -439,6 +456,7 @@ RCT_EXPORT_MODULE()
     NSDictionary *deviceNameForType = @{
                                         @"AM3S" :kType_AM3S,
                                         @"AM4" :kType_AM4,
+                                        @"AM5" :kType_AM5,
                                         @"PO3":kType_PO3,
                                         @"PO3M":kType_PO3,
                                         @"BP3L" :kType_BP3L,
@@ -460,6 +478,7 @@ RCT_EXPORT_MODULE()
                                         @"TS28B":kType_TS28B,
                                         @"BG1S":kType_BG1S,
                                         @"HS2S":kType_HS2S,
+                                        @"HS2S Pro":kType_HS2S_PRO,
                                         @"PO1":kType_PO1,
                                         @"PT3SBT":kType_PT3SBT,
                                         };
@@ -490,6 +509,7 @@ RCT_EXPORT_MODULE()
     NSDictionary *deviceNameForType = @{
                                         @"AM3S" :kType_AM3S,
                                         @"AM4" :kType_AM4,
+                                        @"AM5" :kType_AM5,
                                         @"PO3":kType_PO3,
                                         @"PO3M":kType_PO3,
                                         @"BP3L" :kType_BP3L,
@@ -511,6 +531,7 @@ RCT_EXPORT_MODULE()
                                         @"TS28B":kType_TS28B,
                                         @"BG1S":kType_BG1S,
                                         @"HS2S":kType_HS2S,
+                                        @"HS2S Pro":kType_HS2S_PRO,
                                         @"PO1":kType_PO1,
                                         @"PT3SBT":kType_PT3SBT,
                                         };
@@ -534,6 +555,7 @@ RCT_EXPORT_MODULE()
     NSDictionary *deviceNameForType = @{
                                         @"AM3S" :kType_AM3S,
                                         @"AM4" :kType_AM4,
+                                        @"AM5" :kType_AM5,
                                         @"PO3":kType_PO3,
                                         @"PO3M":kType_PO3,
                                         @"BP3L" :kType_BP3L,
@@ -551,6 +573,7 @@ RCT_EXPORT_MODULE()
                                         @"TS28B":kType_TS28B,
                                         @"BG1S":kType_BG1S,
                                         @"HS2S":kType_HS2S,
+                                        @"HS2S Pro":kType_HS2S_PRO,
                                         @"PO1":kType_PO1,
                                         @"PT3SBT":kType_PT3SBT,
                                         };
@@ -669,6 +692,10 @@ RCT_EXPORT_METHOD(startDiscovery:(nonnull NSString *)deviceType){
         
         [[ScanDeviceController commandGetInstance] commandScanDeviceType:HealthDeviceType_AM4];
         
+    } else if ([deviceType isEqualToString:kType_AM5]){
+        
+        [[ScanDeviceController commandGetInstance] commandScanDeviceType:HealthDeviceType_AM5];
+        
     } else if ([deviceType isEqualToString:kType_BP3L]){
         
         [[ScanDeviceController commandGetInstance] commandScanDeviceType:HealthDeviceType_BP3L];
@@ -746,7 +773,7 @@ RCT_EXPORT_METHOD(startDiscovery:(nonnull NSString *)deviceType){
     
    [self.ts28bController connectDevice:device];
     
-   [self.bridge.eventDispatcher sendDeviceEventWithName:kEvent_Scan_Device body:@{@"mac":device.serialNumber,@"type":@"TS28B"}];
+   [self.bridge.eventDispatcher sendDeviceEventWithName:kEvent_Scan_Device body:@{@"mac":@"",@"type":@"TS28B"}];
     
     
     
@@ -784,6 +811,8 @@ RCT_EXPORT_METHOD(stopDiscovery){
     [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_AM3S];
     
     [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_AM4];
+    
+    [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_AM5];
     
     [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_BP3L];
     
@@ -945,6 +974,10 @@ RCT_EXPORT_METHOD(connectDevice:(nonnull NSString *)mac type:(nonnull NSString *
         
         [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_AM4 andSerialNub:mac];
         
+    }else if ([deviceType isEqualToString:kType_AM5]){
+        
+        [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_AM5 andSerialNub:mac];
+        
     }else if ([deviceType isEqualToString:kType_BP3L]){
         
         [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_BP3L andSerialNub:mac];
@@ -1049,11 +1082,26 @@ RCT_EXPORT_METHOD(getDevicesIDPS:(nonnull NSString *)mac callback:(RCTResponseSe
                 
                 [dic setObject:[deviceDic objectForKey:@"DeviceName"] forKey:@"accessoryname"];
                 
-                [dic setObject:[deviceDic objectForKey:@"FirmwareVersion"] forKey:@"firmwareversion"];
+                if ([[deviceDic objectForKey:@"DeviceName"] isEqualToString:@"AM5"]) {
+                    [dic setObject:@"1.0.0" forKey:@"firmwareversion"];
+                    
+                    [dic setObject:@"1.0.0" forKey:@"hardwareversion"];
+                    
+                    [dic setObject:@"AM5" forKey:@"modenumber"];
+                }else{
+                    
+                    [dic setObject:[deviceDic objectForKey:@"FirmwareVersion"] forKey:@"firmwareversion"];
+                    
+                    [dic setObject:[deviceDic objectForKey:@"HardwareVersion"] forKey:@"hardwareversion"];
+                    
+                    [dic setObject:[deviceDic objectForKey:@"ModelNumber"] forKey:@"modenumber"];
+                }
                 
-                [dic setObject:[deviceDic objectForKey:@"HardwareVersion"] forKey:@"hardwareversion"];
                 
-                if(![[deviceDic objectForKey:@"DeviceName"] isEqualToString:@"BP5"] && ![[deviceDic objectForKey:@"DeviceName"] isEqualToString:@"BP7"]){
+                
+               
+                
+                if(![[deviceDic objectForKey:@"DeviceName"] isEqualToString:@"BP5"] && ![[deviceDic objectForKey:@"DeviceName"] isEqualToString:@"BP7"]&& ![[deviceDic objectForKey:@"DeviceName"] isEqualToString:@"AM5"]){
                 
                     [dic setObject:[deviceDic objectForKey:@"Manufacture"] forKey:@"manufacture"];
                 }
@@ -1061,7 +1109,7 @@ RCT_EXPORT_METHOD(getDevicesIDPS:(nonnull NSString *)mac callback:(RCTResponseSe
                 
                 [dic setObject:[deviceDic objectForKey:@"SerialNumber"] forKey:@"serialNumber"];
                 
-                [dic setObject:[deviceDic objectForKey:@"ModelNumber"] forKey:@"modenumber"];
+                
                 
                 
                 callback(@[dic]);

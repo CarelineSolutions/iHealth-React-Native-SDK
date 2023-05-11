@@ -161,6 +161,7 @@ iHealthDeviceManagerModule.connectDevice(mac, type);
 
 [AM3S workflow](./doc/am3s.md)
 [AM4 workflow](./doc/am4.md)
+[AM5 workflow](./doc/am5.md)
 [BG1 workflow](./doc/bg1.md)
 [BG5 workflow](./doc/bg5.md)
 [BG5S workflow](./doc/bg5s.md)
